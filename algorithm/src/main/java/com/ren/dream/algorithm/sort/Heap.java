@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 public class Heap {
   public static void main(String[] args) {
-    int[] test = new int[100];
+    int[] test = new int[10];
     for (int i = 0; i < test.length; i++) {
       test[i] = (int) (Math.random() * 100);
     }
