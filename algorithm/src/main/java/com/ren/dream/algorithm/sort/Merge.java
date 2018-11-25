@@ -48,7 +48,7 @@ public class Merge {
     int srcIndex = start;
 
     while (leftIndex < leftSize && rightIndex < rightSize) {
-      if (lArray[leftIndex] < rArray[rightIndex]) {
+      if (lArray[leftIndex] <= rArray[rightIndex]) {
         src[srcIndex] = lArray[leftIndex];
         leftIndex++;
       } else {
