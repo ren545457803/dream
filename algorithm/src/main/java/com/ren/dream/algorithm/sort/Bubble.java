@@ -21,9 +21,9 @@ public class Bubble {
 
   private static void bubbleSort(int[] src) {
     for (int i = 0; i < src.length - 1; i++) {
-      for (int j = src.length - 1; j > i; j--) {
-        if (src[j] < src[j - 1]) {
-          swap(src, j, j - 1);
+      for (int j = 0; j < src.length - i - 1; j++) {
+        if (src[j] > src[j + 1]) {
+          swap(src, j, j + 1);
         }
       }
     }
