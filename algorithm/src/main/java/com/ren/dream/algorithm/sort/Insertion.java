@@ -21,17 +21,13 @@ public class Insertion {
 
   private static void insertionSort(int[] src) {
     for (int i = 1; i < src.length; i++) {
-      for (int j = i; j > 0; j--) {
-        if (src[j] > src[j - 1]) break;
-        swap(src, j, j - 1);
+      int insertNum = src[i];
+      int insertIndex = i - 1;
+      while (insertIndex >= 0 && src[insertIndex] > insertNum) {
+        src[insertIndex + 1] = src[insertIndex];
+        insertIndex--;
       }
+      src[insertIndex + 1] = insertNum;
     }
-  }
-
-  private static void swap(int[] src, int i, int j) {
-    int temp = src[i];
-
-    src[i] = src[j];
-    src[j] = temp;
   }
 }
