@@ -15,8 +15,12 @@ public class Merge {
     }
     System.out.println(Arrays.toString(test));
 
-    mergeSort(test, 0, test.length - 1);
+    sort(test);
     System.out.println(Arrays.toString(test));
+  }
+
+  public static void sort(int[] arr) {
+    mergeSort(arr, 0, arr.length - 1);
   }
 
   private static void mergeSort(int[] src, int start, int end) {

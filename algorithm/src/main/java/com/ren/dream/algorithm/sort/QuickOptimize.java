@@ -7,11 +7,11 @@ import java.util.Arrays;
  * 快速排序
  */
 
-public class Quick {
+public class QuickOptimize {
   public static void main(String[] args) {
-    int[] test = new int[20];
+    int[] test = new int[10];
     for (int i = 0; i < test.length; i++) {
-      test[i] = (int) (Math.random() * 100);
+      test[i] = (int) (Math.random() * 3);
     }
     System.out.println(Arrays.toString(test));
 
@@ -25,28 +25,40 @@ public class Quick {
 
   private static void quickSort(int[] src, int l, int r) {
     if (l < r) {
-      int pivotIndex = partition(src, l, r);
+      int pivotIndex = partitionOptimize(src, l, r);
       quickSort(src, l, pivotIndex - 1);
       quickSort(src, pivotIndex + 1, r);
     }
   }
 
-  private static int partition(int[] src, int l, int r) {
+  private static int partitionOptimize(int[] src, int l, int r) {
+    swap(src, l, (int) (Math.random() * (r - l + 1) + l));
+
     int pivot = src[l];
 
-    // 保存最后一个比pivot小的下标
-    int pivotIndex = l;
-    // 1. 比pivot小的放左边，大的放右边
-    for (int i = l + 1; i <= r; i++) {
-      if (src[i] <= pivot) {
-        swap(src, pivotIndex + 1, i);
-        pivotIndex++;
+    // [l+1,i)<=pivot,(j,r]>=pivot
+    int i = l + 1;
+    int j = r;
+
+    while (true) {
+      while (i <= r && src[i] < pivot) {
+        i++;
       }
+
+      while (j >= l + 1 && src[j] > pivot) {
+        j--;
+      }
+
+      if (i > j) {
+        break;
+      }
+      swap(src, i, j);
+      i++;
+      j--;
     }
 
-    // 2. 对换pivot和最小的
-    swap(src, l, pivotIndex);
-    return pivotIndex;
+    swap(src, l, j);
+    return j;
   }
 
   private static void swap(int[] src, int i, int j) {

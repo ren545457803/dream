@@ -15,8 +15,12 @@ public class Bubble {
     }
     System.out.println(Arrays.toString(test));
 
-    bubbleSort(test);
+    sort(test);
     System.out.println(Arrays.toString(test));
+  }
+
+  public static void sort(int[] src) {
+    bubbleSort(src);
   }
 
   private static void bubbleSort(int[] src) {
