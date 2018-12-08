@@ -1,5 +1,6 @@
 package com.ren.dream.algorithm.sort;
 
+import com.ren.dream.structure.heap.MaxHeap;
 import java.util.Arrays;
 
 /**
@@ -17,6 +18,17 @@ public class Heap {
 
     heapSort(test);
     System.out.println(Arrays.toString(test));
+  }
+
+  public static void sort(int[] src) {
+    MaxHeap maxHeap = new MaxHeap(src);
+    //for (int i = 0; i < src.length; i++) {
+    //  maxHeap.insertItem(src[i]);
+    //}
+
+    for (int i = src.length - 1; i >= 0 ; i--) {
+      src[i] = maxHeap.extractItem();
+    }
   }
 
   private static void heapSort(int[] src) {

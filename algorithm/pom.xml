@@ -11,5 +11,11 @@
 
   <artifactId>algorithm</artifactId>
 
-
+  <dependencies>
+    <dependency>
+      <groupId>com.ren</groupId>
+      <artifactId>structure</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
 </project>

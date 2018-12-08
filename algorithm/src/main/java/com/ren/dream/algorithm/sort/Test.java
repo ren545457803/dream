@@ -10,14 +10,12 @@ import java.lang.reflect.Method;
 public class Test {
   public static void main(String[] args)
       throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-    int[] arr = generateRandomArray(20000, 1, 10000);
-    int[] copyArr = copyArray(arr);
-    int[] copyArr2 = copyArray(arr);
+    int[] arr = generateRandomArray(1000000, 1, 100000);
 
-    test(Merge.class, copyArr);
-    test(Quick.class, arr);
-    test(QuickOptimize.class, copyArr2);
+    test(Merge.class, copyArray(arr));
+    test(Quick.class, copyArray(arr));
     test(QuickOptimize.class, copyArray(arr));
+    test(Heap.class, copyArray(arr));
   }
 
   private static void test(Class<?> cl, int[] arr)
