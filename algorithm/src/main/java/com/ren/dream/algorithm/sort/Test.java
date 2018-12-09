@@ -15,6 +15,7 @@ public class Test {
     test(Merge.class, copyArray(arr));
     test(Quick.class, copyArray(arr));
     test(QuickOptimize.class, copyArray(arr));
+    test(Heap2.class, copyArray(arr));
     test(Heap.class, copyArray(arr));
   }
 

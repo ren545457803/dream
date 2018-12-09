@@ -1,11 +1,10 @@
 package com.ren.dream.algorithm.sort;
 
-import com.ren.dream.structure.heap.MaxHeap;
 import java.util.Arrays;
 
 /**
  * Created by 任亚彬 on 2018-11-23.
- * 堆排序
+ * 堆排序：原地排序
  */
 
 public class Heap {
@@ -21,43 +20,33 @@ public class Heap {
   }
 
   public static void sort(int[] src) {
-    MaxHeap maxHeap = new MaxHeap(src);
-    //for (int i = 0; i < src.length; i++) {
-    //  maxHeap.insertItem(src[i]);
-    //}
-
-    for (int i = src.length - 1; i >= 0 ; i--) {
-      src[i] = maxHeap.extractItem();
-    }
+    heapSort(src);
   }
 
   private static void heapSort(int[] src) {
     // 调整堆，从最后一个父结点开始
-    for (int i = src.length / 2 - 1; i >= 0; i--) {
-      max_heapify(src, i, src.length - 1);
+    int n = src.length;
+    for (int i = (n - 1) / 2; i >= 0; i--) {
+      shiftDown(src, i, n - 1);
     }
 
-    for (int j = src.length - 1; j > 0; j--) {
+    for (int j = n - 1; j > 0; j--) {
       swap(src, 0, j);
-      max_heapify(src, 0, j - 1);
+      shiftDown(src, 0, j - 1);
     }
   }
 
-  private static void max_heapify(int[] src, int start, int end) {
-    int dad = start;
-    while (true) {
-      int son = dad * 2 + 1;
-      if (son > end) break;
-
-      if (son + 1 <= end && src[son + 1] > src[son]) {
-        son++;
+  private static void shiftDown(int[] src, int start, int end) {
+    while (start * 2 + 1 <= end) {
+      int j = start * 2 + 1;
+      if (j + 1 <= end && src[j + 1] > src[j]) {
+        j++;
       }
 
-      if (src[dad] >= src[son]) {
-        return;
-      }
-      swap(src, dad, son);
-      dad = son;
+      if (src[start] > src[j]) break;
+
+      swap(src, start, j);
+      start = j;
     }
   }
 
